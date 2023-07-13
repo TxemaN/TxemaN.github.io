@@ -5,14 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const orientacion = document.querySelector("#orientacion")
   const urlBase = 'https://api.pexels.com/v1'
   let formatoMalo = document.querySelector("#formatoMalo")
+  let url=""
+  let urlConOrientacion =""
   const tendencias = document.querySelector("#tendencias")
   const contenedorFotos = document.querySelector("#contenedorFotos")
   const fragment = document.createDocumentFragment();
   const urlTendencias = 'curated?page=2&per_page='
   const cabeceraTendencias = document.querySelector("#cabeceraTendencias")
   const btnMostrar = document.querySelector("#btnMostrar")
-  let cantidadFotosBusqueda = 25;
-  let cantidadMaximaBusqueda = 5;
+  let cantidadFotosBusqueda=2
+ 
+  
   let cantidadFotosCurated = 3;
   const regExp = {
     loQueBusca: /[\a-zA-Z\s]+/i
@@ -32,17 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (validado) {
 
       //  USAR ESPACIO PARA LA NUEVA FUNCIÓN
-      let valor = busqueda.value
-      let valor2 = orientacion.value
-      let mensaje = ""
-
-      formatoMalo.textContent = mensaje
-
-      let url = `search?query=${valor}&per_page=${cantidadFotosBusqueda}&orientation=${valor2}&page=1`
-      pintarFotos(url)
-      form.reset()
-      console.log(valor)
-      console.log(valor2)
+      comenzarPintar()
     }
 
   })
@@ -64,6 +57,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  const comenzarPintar = () =>{
+    let valor = busqueda.value
+    let valor2 = orientacion.value
+    
+    let mensaje = ""
+
+    formatoMalo.textContent = mensaje
+
+     url = `search?query=${valor}&per_page=5&orientation=${valor2}&page=${cantidadFotosBusqueda}`
+    urlConOrientacion=`search?query=${valor}&per_page=5&orientation=${valor2}&page=`
+    pintarFotos(url)
+    form.reset()
+    console.log(valor)
+    console.log(urlConOrientacion)
+  }
   //con este addevent IF llamamos a los botones de mostrar o no//
   document.addEventListener('click', (ev) => {
 
@@ -82,6 +90,23 @@ document.addEventListener('DOMContentLoaded', () => {
       cantidadFotosCurated = 0
       btnMostrar.textContent = "Mostrar tendencias"
     }
+    if (ev.target.id == "anterior") {
+      
+      cantidadFotosBusqueda -= 1;
+      if(cantidadFotosBusqueda==0){cantidadFotosBusqueda=1}
+    pintarFotos(url) 
+    url= `${urlConOrientacion}${cantidadFotosBusqueda}`
+      
+      
+      
+    }
+    if (ev.target.id == "siguiente") {
+     cantidadFotosBusqueda += 1;
+    pintarFotos(url) 
+    url= `${urlConOrientacion}${cantidadFotosBusqueda}`
+    
+    }
+
 
 
   })
@@ -90,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tendencias.classList.add("esconder")
 
   }
+  
 
   //COGER HTML
   const consultaTendencias = async () => {
