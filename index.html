@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica Ajax</title>
+    <link rel="stylesheet" href="css/mystyle.css">
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <section class="introducirDescripcion">
+            <form action="" method="" id="formulario">
+                <label for="busqueda">¿Qué buscas?</label>
+                <input type="text" id="busqueda" name="busqueda" placeholder="describe la foto">
+                <label for="orientacion">¿Qué orientación?</label>
+                <select name="orientacion" id="orientacion">
+                    <option value="">Indiferente</option>
+                    <option value="portrait">vertical</option>
+                    <option value="landscape">horizontal</option>
+
+                </select>
+                <p id="formatoMalo"></p>
+                <input type="submit">
+            </form>
+            <section id="botones" class="botonesTendencias">
+                <button id="btnMostrar">Mostrar más tendencias</button>
+                <button id="btnOcultar">No mostrar tendencias</button>
+            </section>
+            <section><h2 id="cabeceraTendencias">TENDENCIAS</h2> </section>
+            <section id="tendencias" class="tendenciasContainer">
+               
+            </section>
+        </section>
+<section><h2 id="cabeceraResultado">RESULTADO DE LA BÚSQUEDA</h2> </section>
+        <section id="contenedorFotos" class="flexContainer">
+           
+
+        </section>
+        <footer>
+            <div class="paginacion">
+                <a href="#">&laquo;</a>
+                
+                <a href="#">&raquo;</a>
+              </div> 
+        </footer>
+    </main>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

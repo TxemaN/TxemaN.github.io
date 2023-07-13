@@ -1,0 +1,49 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+h2{
+   text-align: center;
+}
+#cabeceraTendencias{
+   text-align: center;
+}
+.flexContainer {
+   display: flex;
+   flex-wrap: wrap;
+   width: 100%;
+   gap: 22px;
+  
+   justify-content: center;
+}
+.introducirDescripcion {
+   display: flex;
+   flex-wrap: wrap;
+   width: 100%;
+   gap: 22px;
+   
+   justify-content: center;
+}
+
+.flexContainer.div {
+    width: calc(30% - 15px);
+
+}
+.introducirDescripcion>* {
+   width: calc(50% - 15px);
+
+}
+.tendenciasContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 10px;
+  
+    justify-content: center;
+ }
+ 
+ .esconder{
+   display:none
+ }
+
