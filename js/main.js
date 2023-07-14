@@ -5,18 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const orientacion = document.querySelector("#orientacion")
   const urlBase = 'https://api.pexels.com/v1'
   let formatoMalo = document.querySelector("#formatoMalo")
-  let url=""
-  let urlConOrientacion =""
+  let url = ""
+  let urlConOrientacion = ""
   const tendencias = document.querySelector("#tendencias")
   const contenedorFotos = document.querySelector("#contenedorFotos")
   const fragment = document.createDocumentFragment();
-  const urlTendencias = 'curated?page=2&per_page='
+  let urlTendencias = 97492
+  let refTendencia = 1;
   const cabeceraTendencias = document.querySelector("#cabeceraTendencias")
   const btnMostrar = document.querySelector("#btnMostrar")
-  let cantidadFotosBusqueda=2
- 
-  
-  let cantidadFotosCurated = 3;
+  let paginaResultado = 2
+
   const regExp = {
     loQueBusca: /[\a-zA-Z\s]+/i
   }
@@ -41,8 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   //VALIDACIÓN
-  
-
 
   const validar = () => {
 
@@ -57,75 +54,87 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  const comenzarPintar = () =>{
+  const comenzarPintar = () => {
     let valor = busqueda.value
     let valor2 = orientacion.value
-    
+
     let mensaje = ""
 
     formatoMalo.textContent = mensaje
 
-     url = `search?query=${valor}&per_page=5&orientation=${valor2}&page=${cantidadFotosBusqueda}`
-    urlConOrientacion=`search?query=${valor}&per_page=5&orientation=${valor2}&page=`
+    url = `search?query=${valor}&per_page=6&orientation=${valor2}&page=${paginaResultado}`
+    urlConOrientacion = `search?query=${valor}&per_page=6&orientation=${valor2}&page=`
     pintarFotos(url)
     form.reset()
     console.log(valor)
     console.log(urlConOrientacion)
   }
-  //con este addevent IF llamamos a los botones de mostrar o no//
+  //con este addevent llamamos a los botones de mostrar o no//
   document.addEventListener('click', (ev) => {
 
 
     if (ev.target.id == "btnMostrar") {
       tendencias.classList.remove("esconder")
+      contenedorFotos.innerHTML = ""
 
-      consultaTendencias(cantidadFotosCurated);
-      cantidadFotosCurated += 3
+      consultaTendencias(urlTendencias);
+      refTendencia += 1
+      if (refTendencia == 1) {
+        urlTendencias = 97492
+      }
+      if (refTendencia == 2) {
+        urlTendencias = 59523
+      }
+      if (refTendencia == 3) {
+        urlTendencias = 3746214
+      }
+      if (refTendencia == 4) {
+        urlTendencias = 2133
+      }
+      if (refTendencia > 4) {
+        refTendencia = 1
+        urlTendencias = 97492
+      }
+      console.log(refTendencia)
+      
       pintarTendencias()
       btnMostrar.textContent = "Mostrar más tendencias"
     }
     if (ev.target.id == "btnOcultar") {
       esconderFotos();
-      consultaTendencias(cantidadFotosCurated);
-      cantidadFotosCurated = 0
+
       btnMostrar.textContent = "Mostrar tendencias"
     }
     if (ev.target.id == "anterior") {
-      
-      cantidadFotosBusqueda -= 1;
-      if(cantidadFotosBusqueda==0){cantidadFotosBusqueda=1}
-    pintarFotos(url) 
-    url= `${urlConOrientacion}${cantidadFotosBusqueda}`
-      
-      
-      
+      pintarFotos(url)
+      paginaResultado = paginaResultado -= 1;
+      if (paginaResultado == 0) { paginaResultado = 1 }
+
+      url = `${urlConOrientacion}${paginaResultado}`
+
     }
     if (ev.target.id == "siguiente") {
-     cantidadFotosBusqueda += 1;
-    pintarFotos(url) 
-    url= `${urlConOrientacion}${cantidadFotosBusqueda}`
-    
+      pintarFotos(url)
+      paginaResultado = paginaResultado += 1;
+      url = `${urlConOrientacion}${paginaResultado}`
+
     }
 
-
-
   })
+
   const esconderFotos = () => {
-
     tendencias.classList.add("esconder")
-
   }
-  
+
 
   //COGER HTML
   const consultaTendencias = async () => {
 
     try {
 
-      const resp = await fetch(`${urlBase}/${urlTendencias}${cantidadFotosCurated}`, {
+      const resp = await fetch(`${urlBase}/photos/${urlTendencias}`, {
         headers: {
           'Authorization': 'mumVi2YGbikluEcNGTCofbZyeHkJZIPSTUpGcmqVe9173qGbfmzYGzCe'
-
         }
       })
 
@@ -153,38 +162,69 @@ document.addEventListener('DOMContentLoaded', () => {
     const { ok, datos } = await consultaTendencias(urlTendencias)
 
     if (ok) {
-      const { photos } = datos
-
-      photos.forEach(({ alt, src, }) => {
-
-        const cajaFotos = document.createElement("DIV");
-        const caja = document.createElement("FIGURE");
-        const imagen = document.createElement("IMG");
-        const descripcion = document.createElement("ALT");
-        imagen.src = src.medium;
-        descripcion.textContent = alt;
-        imagen.value = "caca"
-        imagen.classList.add("foto")
 
 
+      const cajaFotos = document.createElement("DIV");
+      const caja = document.createElement("FIGURE");
+      const imagen = document.createElement("IMG");
+      const descripcion = document.createElement("ALT");
+      imagen.src = datos.src.medium;
+      imagen.id = datos.id;
+      descripcion.textContent = datos.alt;
+      imagen.classList.add("foto")
 
-        caja.append(imagen);
+      caja.append(imagen);
+      cajaFotos.append(caja);
+      imagen.append(descripcion)
+      fragment.append(cajaFotos);
 
+      tendencias.append(fragment);
 
-        cajaFotos.append(caja);
-
-        imagen.append(descripcion)
-        fragment.append(cajaFotos);
-
-        tendencias.append(fragment);
-      })
 
 
     } console.log(datos)
   }
   pintarTendencias()
+//REPRODUCIR EL SEARCH DE LA TENDENCIA EN LOS RESULTADOS DE ABAJO//
+document.addEventListener("click", ({ target }) => {
 
-
+    if(target.id==97492){
+      contenedorFotos.innerHTML = ""
+      let probando = "probando";
+      console.log(probando)
+      pintarFotos(url)
+       url = `search?query=fire&per_page=6&orientation=&page=1`
+       urlConOrientacion = `search?query=fire&per_page=6&orientation=&page=1`
+       }
+    
+    if(target.id==59523){
+      contenedorFotos.innerHTML = ""
+   let probando = "probando";
+   console.log(probando)
+   pintarFotos(url)
+      
+      url = `search?query=puppy&per_page=6&orientation=&page=1`
+      urlConOrientacion = `search?query=puppy&per_page=6&orientation=&page=1`
+    }
+    if(target.id==3746214){
+      contenedorFotos.innerHTML = ""
+      let probando = "probando";
+      console.log(probando)
+      pintarFotos(url)
+         
+         url = `search?query=flower&per_page=6&orientation=&page=1`
+         urlConOrientacion = `search?query=flower&per_page=6&orientation=&page=1`
+       }
+       if(target.id==2133){
+        contenedorFotos.innerHTML = ""
+        let probando = "probando";
+        console.log(probando)
+        pintarFotos(url)
+           
+           url = `search?query=father&per_page=6&orientation=&page=1`
+           urlConOrientacion = `search?query=father&per_page=6&orientation=&page=1`
+         }
+  })
 
 
   const consulta = async (url) => {
@@ -214,7 +254,6 @@ document.addEventListener('DOMContentLoaded', () => {
         datos: error
       }
     }
-
   }
 
 
@@ -226,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (ok) {
       const { photos } = datos
-      photos.forEach(({ alt, src }) => {
+      photos.forEach(({ alt, src, id }) => {
         console.log(src.small)
 
         const cajaFotos = document.createElement("DIV");
@@ -235,13 +274,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const descripcion = document.createElement("ALT");
 
         imagen.src = src.medium;
+        imagen.id = id;
         descripcion.textContent = alt;
 
         caja.append(imagen);
-
-
         cajaFotos.append(caja);
-
         imagen.append(descripcion)
         fragment.append(cajaFotos);
 
@@ -252,9 +289,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // console.log(busqueda)
   }
-
-
-
-
 
 })//LOAD

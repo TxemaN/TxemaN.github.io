@@ -6,9 +6,11 @@
 h2{
    text-align: center;
 }
-#cabeceraTendencias{
-   text-align: center;
+
+img {
+   border: black 12px solid;
 }
+
 .flexContainer {
    display: flex;
    flex-wrap: wrap;
@@ -23,16 +25,18 @@ h2{
    width: 100%;
    gap: 22px;
    
-   justify-content: center;
+   justify-content: left;
 }
 
-.flexContainer.div {
-    width: calc(30% - 15px);
 
-}
 .introducirDescripcion>* {
    width: calc(50% - 15px);
 
+}
+.flexContainer>* {
+   width: calc(40% - 15px);
+   
+   
 }
 .tendenciasContainer {
     display: flex;
