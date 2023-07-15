@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practica Ajax</title>
+    <title>Practica Pexels</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Freehand&family=Space+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/mystyle.css">
 </head>
 
@@ -12,16 +15,16 @@
     <header>
         <section class="introducirDescripcion">
             <form action="" method="" id="formulario">
-                <label for="busqueda">¿Qué buscas?</label>
+                <label for="busqueda">Describe lo que buscas</label>
                 <input type="text" id="busqueda" name="busqueda" placeholder="describe la foto">
-                <label for="orientacion">¿Qué orientación?</label>
+                <label for="orientacion">¿Vertical u horizontal?</label>
                 <select name="orientacion" id="orientacion">
                     <option value="">Indiferente</option>
                     <option value="portrait">vertical</option>
                     <option value="landscape">horizontal</option>
 
                 </select>
-                <input type="submit">
+                <input type="submit" value="Encuentra tu foto">
                 <p id="formatoMalo"></p>
 
             </form>
@@ -41,7 +44,7 @@
 
         </section>
         <section>
-            <h2 id="cabeceraResultado" class="esconder">RESULTADO DE LA BÚSQUEDA</h2>
+            <h2 id="cabeceraResultado" class="esconder">HEMOS ENCONTRADO ESTO PARA TI</h2>
         </section>
         <section id="contenedorFotos" class="flexContainer"> </section>
         <section id="cambioPagina" class="botonesTendencias">
@@ -54,6 +57,8 @@
 
 
         <footer>
+            
+<a href="https://www.pexels.com">ALL CREDIT TO PEXELS</a>
 
         </footer>
     </main>

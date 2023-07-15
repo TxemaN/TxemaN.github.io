@@ -64,9 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let valor2 = orientacion.value
         anterior.classList.remove("esconder")
         siguiente.classList.remove("esconder")
-        
+
         cabeceraResultado.classList.remove("esconder")
-       
+
         let mensaje = ""
 
         formatoMalo.textContent = mensaje
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tendencias.classList.remove("esconder")
         cabeceraTendencias.classList.remove("esconder")
         btnOcultar.classList.remove("esconder")
-        
+
     }
     //COGER HTML
 
@@ -155,6 +155,8 @@ document.addEventListener('DOMContentLoaded', () => {
             pintarFotos(url)
             url = `search?query=fire&per_page=6&orientation=&page=1`
             urlConOrientacion = `search?query=fire&per_page=6&orientation=&page=1`
+            anterior.classList.remove("esconder")
+            siguiente.classList.remove("esconder")
         }
 
         if (target.id == 59523) {
@@ -165,6 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             url = `search?query=puppy&per_page=6&orientation=&page=1`
             urlConOrientacion = `search?query=puppy&per_page=6&orientation=&page=1`
+            anterior.classList.remove("esconder")
+            siguiente.classList.remove("esconder")
         }
         if (target.id == 3746214) {
             contenedorFotos.innerHTML = ""
@@ -174,6 +178,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             url = `search?query=flower&per_page=6&orientation=&page=1`
             urlConOrientacion = `search?query=flower&per_page=6&orientation=&page=1`
+            anterior.classList.remove("esconder")
+            siguiente.classList.remove("esconder")
         }
         if (target.id == 2133) {
             contenedorFotos.innerHTML = ""
@@ -183,6 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             url = `search?query=father&per_page=6&orientation=&page=1`
             urlConOrientacion = `search?query=father&per_page=6&orientation=&page=1`
+            anterior.classList.remove("esconder")
+            siguiente.classList.remove("esconder")
         }
     })
 
@@ -233,8 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     const pintarTendencias = async (urlTendencias) => {
-        anterior.classList.remove("esconder")
-        siguiente.classList.remove("esconder")
+
         tendencias.innerHTML = ""
         urlTendencias = urlTendencias2;
         const { ok, datos } = await consulta(`photos/` + urlTendencias)
@@ -244,16 +251,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
             const caja = document.createElement("FIGURE");
+            const descripcion = document.createElement("DIV");
             const imagen = document.createElement("IMG");
-            const descripcion = document.createElement("ALT");
+            
             imagen.src = datos.src.medium;
             imagen.id = datos.id;
 
             imagen.classList.add("foto")
-            descripcion.textContent = datos.alt;
-            caja.append(imagen);
+            descripcion.title = datos.alt;
+            caja.append(descripcion);
 
-            imagen.append(descripcion)
+            descripcion.append(imagen)
             fragment.append(caja);
 
             tendencias.append(fragment);
@@ -277,16 +285,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
                 const caja = document.createElement("FIGURE");
+                const descripcion = document.createElement("DIV");
                 const imagen = document.createElement("IMG");
-                const descripcion = document.createElement("ALT");
+                
 
                 imagen.src = src.medium;
                 imagen.id = id;
-                descripcion.textContent = alt;
+                descripcion.title = alt;
 
-                caja.append(imagen);
+                caja.append(descripcion);
 
-                imagen.append(descripcion)
+                descripcion.append(imagen)
                 fragment.append(caja);
 
                 contenedorFotos.append(fragment);
