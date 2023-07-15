@@ -1,6 +1,5 @@
 * {
-    margin: 0px;
-    padding: 0px;
+   
     box-sizing: border-box;
 }
 h2{
@@ -25,7 +24,15 @@ img {
    width: 100%;
    gap: 22px;
    
-   justify-content: left;
+   justify-content: center;
+}
+.botonesTendencias {
+   display: flex;
+   flex-wrap: wrap;
+   width: 100%;
+   gap: 22px;
+   
+   justify-content: center;
 }
 
 
@@ -33,9 +40,10 @@ img {
    width: calc(50% - 15px);
 
 }
+
 .flexContainer>* {
    width: calc(40% - 15px);
-   
+   align-content: center;
    
 }
 .tendenciasContainer {
@@ -47,6 +55,14 @@ img {
     justify-content: center;
  }
  
+ .paginacion{
+   display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 10px;
+  
+    justify-content: center;
+ }
  .esconder{
    display:none
  }

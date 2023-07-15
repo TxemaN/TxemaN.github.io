@@ -9,8 +9,7 @@
 </head>
 
 <body>
-    <header></header>
-    <main>
+    <header>
         <section class="introducirDescripcion">
             <form action="" method="" id="formulario">
                 <label for="busqueda">¿Qué buscas?</label>
@@ -22,32 +21,43 @@
                     <option value="landscape">horizontal</option>
 
                 </select>
-                <p id="formatoMalo"></p>
                 <input type="submit">
+                <p id="formatoMalo"></p>
+
             </form>
-            <section id="botones" class="botonesTendencias">
-                <button id="btnMostrar">Mostrar más tendencias</button>
-                <button id="btnOcultar">No mostrar tendencias</button>
-            </section>
-            <section><h2 id="cabeceraTendencias">TENDENCIAS</h2> </section>
-            <section id="tendencias" class="tendenciasContainer">
-               
-            </section>
+    </header>
+    <main>
+
+        <section id="botones" class="botonesTendencias">
+            <button id="btnMostrar">Mostrar más tendencias</button>
+            <button id="btnOcultar" class="">No mostrar tendencias</button>
         </section>
-<section><h2 id="cabeceraResultado">RESULTADO DE LA BÚSQUEDA</h2> </section>
-        <section id="contenedorFotos" class="flexContainer">
-           
 
         </section>
+        <section>
+            <h2 id="cabeceraTendencias">TENDENCIAS</h2>
+        </section>
+        <section id="tendencias" class="tendenciasContainer">
+
+        </section>
+        <section>
+            <h2 id="cabeceraResultado" class="esconder">RESULTADO DE LA BÚSQUEDA</h2>
+        </section>
+        <section id="contenedorFotos" class="flexContainer"> </section>
+        <section id="cambioPagina" class="botonesTendencias">
+
+            <button id="anterior" class="esconder">ANTERIOR</button>
+            <button id="siguiente" class="esconder">SIGUIENTE</button>
+
+
+        </section>
+
+
         <footer>
-            <div class="paginacion">
-                <button id="anterior">ANTERIOR</button>
-                <button id="siguiente">SIGUIENTE</button>
-            
-              </div> 
+
         </footer>
     </main>
-    <script src="js/main.js"></script>
+    <script src="js/main2.js"></script>
 </body>
 
 </html>
