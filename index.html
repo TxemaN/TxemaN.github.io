@@ -18,13 +18,13 @@
                 <label for="busqueda">Describe lo que buscas</label>
                 <input type="text" id="busqueda" name="busqueda" placeholder="describe la foto">
                 <label for="orientacion">¿Vertical u horizontal?</label>
-                <select name="orientacion" id="orientacion">
+                <select name="orientacion" id="orientacion" class="disenyoBoton">
                     <option value="">Indiferente</option>
-                    <option value="portrait">vertical</option>
-                    <option value="landscape">horizontal</option>
+                    <option value="portrait">Vertical</option>
+                    <option value="landscape">Horizontal</option>
 
                 </select>
-                <input type="submit" value="Encuentra tu foto">
+                <input type="submit" value="Encuentra tu foto" class="disenyoBoton">
                 <p id="formatoMalo"></p>
 
             </form>
@@ -32,8 +32,8 @@
     <main>
 
         <section id="botones" class="botonesTendencias">
-            <button id="btnMostrar">Mostrar más tendencias</button>
-            <button id="btnOcultar" class="">No mostrar tendencias</button>
+            <button id="btnMostrar">Mostrar otra sugerencia</button>
+            <button id="btnOcultar" class="">No mostrar sugerencias</button>
         </section>
 
         </section>
@@ -49,16 +49,16 @@
         <section id="contenedorFotos" class="flexContainer"> </section>
         <section id="cambioPagina" class="botonesTendencias">
 
-            <button id="anterior" class="esconder">ANTERIOR</button>
-            <button id="siguiente" class="esconder">SIGUIENTE</button>
+            <button id="anterior" class="esconder">Anterior</button>
+            <button id="siguiente" class="esconder">Siguiente</button>
 
 
         </section>
 
 
-        <footer>
-            
-<a href="https://www.pexels.com">ALL CREDIT TO PEXELS</a>
+        <footer id="piePagina"class="esconder">
+
+            <a href="https://www.pexels.com">ALL CREDIT TO PEXELS</a>
 
         </footer>
     </main>

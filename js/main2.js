@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const siguiente = document.querySelector("#siguiente")
     const btnMostrar = document.querySelector("#btnMostrar")
     const btnOcultar = document.querySelector("#btnOcultar")
+    const piePagina = document.querySelector("#piePagina")
     let paginaResultado = 2
 
     const regExp = {
@@ -64,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let valor2 = orientacion.value
         anterior.classList.remove("esconder")
         siguiente.classList.remove("esconder")
+        piePagina.classList.remove("esconder")
 
         cabeceraResultado.classList.remove("esconder")
 
@@ -140,6 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tendencias.classList.remove("esconder")
         cabeceraTendencias.classList.remove("esconder")
         btnOcultar.classList.remove("esconder")
+        
 
     }
     //COGER HTML
@@ -155,8 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pintarFotos(url)
             url = `search?query=fire&per_page=6&orientation=&page=1`
             urlConOrientacion = `search?query=fire&per_page=6&orientation=&page=1`
-            anterior.classList.remove("esconder")
-            siguiente.classList.remove("esconder")
+          
         }
 
         if (target.id == 59523) {
@@ -167,8 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             url = `search?query=puppy&per_page=6&orientation=&page=1`
             urlConOrientacion = `search?query=puppy&per_page=6&orientation=&page=1`
-            anterior.classList.remove("esconder")
-            siguiente.classList.remove("esconder")
+         
         }
         if (target.id == 3746214) {
             contenedorFotos.innerHTML = ""
@@ -178,8 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             url = `search?query=flower&per_page=6&orientation=&page=1`
             urlConOrientacion = `search?query=flower&per_page=6&orientation=&page=1`
-            anterior.classList.remove("esconder")
-            siguiente.classList.remove("esconder")
+           
         }
         if (target.id == 2133) {
             contenedorFotos.innerHTML = ""
@@ -189,8 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             url = `search?query=father&per_page=6&orientation=&page=1`
             urlConOrientacion = `search?query=father&per_page=6&orientation=&page=1`
-            anterior.classList.remove("esconder")
-            siguiente.classList.remove("esconder")
+            
         }
     })
 
@@ -274,7 +273,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const pintarFotos = async (url) => {
         contenedorFotos.innerHTML = ""
-
+        anterior.classList.remove("esconder")
+        siguiente.classList.remove("esconder")
+        piePagina.classList.remove("esconder")
         const { ok, datos } = await consulta(url)
 
 
