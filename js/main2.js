@@ -20,8 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnMostrar = document.querySelector("#btnMostrar")
     const btnOcultar = document.querySelector("#btnOcultar")
     const piePagina = document.querySelector("#piePagina")
-    let paginaResultado = 2
-
+    let paginaResultado = 1
+    if(paginaResultado==1){
+        anterior.classList.add("esconder")
+    }
     const regExp = {
         loQueBusca: /[\a-zA-Z\s]+/i
     }
@@ -108,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(refTendencia)
 
             pintarTendencias()
-            btnMostrar.textContent = "Mostrar más tendencias"
+            btnMostrar.textContent = "Mostrar otra sugerencia"
         }
         if (ev.target.id == "btnOcultar") {
             esconderFotos();
@@ -118,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (ev.target.id == "anterior") {
             pintarFotos(url)
             paginaResultado = paginaResultado -= 1;
-            if (paginaResultado == 0) { paginaResultado = 1 }
+            if (paginaResultado <1) { paginaResultado = 1 }
 
             url = `${urlConOrientacion}${paginaResultado}`
 
@@ -129,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             url = `${urlConOrientacion}${paginaResultado}`
 
         }
+
 
     })
     //FUNCIONES A LAS QUE SE LLAMA DESDE EL EVENT LISTENER ANTERIOR
@@ -142,15 +145,12 @@ document.addEventListener('DOMContentLoaded', () => {
         tendencias.classList.remove("esconder")
         cabeceraTendencias.classList.remove("esconder")
         btnOcultar.classList.remove("esconder")
-
-
     }
-
-
 
     //REPRODUCIR EL SEARCH DE LA TENDENCIA EN LOS RESULTADOS DE ABAJO//
     document.addEventListener("click", ({ target }) => {
-
+       
+        
         if (target.id == 97492) {
             contenedorFotos.innerHTML = ""
             let probando = "probando";
@@ -158,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pintarFotos(url)
             url = `search?query=fire&per_page=6&orientation=&page=1`
             urlConOrientacion = `search?query=fire&per_page=6&orientation=&page=1`
+           
 
         }
 
@@ -246,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tendencias.innerHTML = ""
         urlTendencias = urlTendencias2;
         const { ok, datos } = await consulta(`photos/` + urlTendencias)
-
+        
         if (ok) {
 
 
@@ -279,10 +280,15 @@ document.addEventListener('DOMContentLoaded', () => {
         siguiente.classList.remove("esconder")
         piePagina.classList.remove("esconder")
         const { ok, datos } = await consulta(url)
-
+if(paginaResultado==1){
+    anterior.classList.add("esconder")
+}
 
         if (ok) {
             const { photos } = datos
+            if(photos.length<6){
+                siguiente.classList.add("esconder")
+            }
             photos.forEach(({ alt, src, id }) => {
                 console.log(src.small)
 
