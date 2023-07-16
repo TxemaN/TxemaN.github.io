@@ -26,8 +26,8 @@ const articulos = ['', 3, '',]
 
 const datosUsuario = {
     id: 1,
-    nombre: 'pepe',
-    email: 'pepe@correo.es',
+    nombre: 'Txema',
+    email: 'txalcala@hotmail.com',
     repite: false
 
 }

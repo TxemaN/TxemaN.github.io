@@ -10,6 +10,9 @@
  */
 
 const newUser = (name, age, admin, data) => {
+    name = "Txema"
+    age = 39  
+    admin = true;
     console.log('user registered in DB ...')
     return true
 }

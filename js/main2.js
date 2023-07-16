@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return true;
         }
     }
-
+    //UNA VEZ VALIDADO//
     const comenzarPintar = () => {
         let valor = busqueda.value
         let valor2 = orientacion.value
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(valor)
         console.log(urlConOrientacion)
     }
-    //con este addevent llamamos a los botones de mostrar o no//
+    //con este addevent llamamos a los botones de mostrar más sugerencias o no mostrarlas//
     document.addEventListener('click', (ev) => {
 
 
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
     })
-
+    //FUNCIONES A LAS QUE SE LLAMA DESDE EL EVENT LISTENER ANTERIOR
     const esconderFotos = () => {
         tendencias.classList.add("esconder")
         cabeceraTendencias.classList.add("esconder")
@@ -142,10 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
         tendencias.classList.remove("esconder")
         cabeceraTendencias.classList.remove("esconder")
         btnOcultar.classList.remove("esconder")
-        
+
 
     }
-    //COGER HTML
+
 
 
     //REPRODUCIR EL SEARCH DE LA TENDENCIA EN LOS RESULTADOS DE ABAJO//
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pintarFotos(url)
             url = `search?query=fire&per_page=6&orientation=&page=1`
             urlConOrientacion = `search?query=fire&per_page=6&orientation=&page=1`
-          
+
         }
 
         if (target.id == 59523) {
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             url = `search?query=puppy&per_page=6&orientation=&page=1`
             urlConOrientacion = `search?query=puppy&per_page=6&orientation=&page=1`
-         
+
         }
         if (target.id == 3746214) {
             contenedorFotos.innerHTML = ""
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             url = `search?query=flower&per_page=6&orientation=&page=1`
             urlConOrientacion = `search?query=flower&per_page=6&orientation=&page=1`
-           
+
         }
         if (target.id == 2133) {
             contenedorFotos.innerHTML = ""
@@ -189,11 +189,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             url = `search?query=father&per_page=6&orientation=&page=1`
             urlConOrientacion = `search?query=father&per_page=6&orientation=&page=1`
-            
+
         }
     })
 
-
+    //COGER DEL HTML
     const consulta = async (url, urlTendencias) => {
         urlTendencias = urlTendencias2
         try {
@@ -239,6 +239,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
+
+    //PLASMAR EN EL HTML//
     const pintarTendencias = async (urlTendencias) => {
 
         tendencias.innerHTML = ""
@@ -252,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const caja = document.createElement("FIGURE");
             const descripcion = document.createElement("DIV");
             const imagen = document.createElement("IMG");
-            
+
             imagen.src = datos.src.medium;
             imagen.id = datos.id;
 
@@ -288,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const caja = document.createElement("FIGURE");
                 const descripcion = document.createElement("DIV");
                 const imagen = document.createElement("IMG");
-                
+
 
                 imagen.src = src.medium;
                 imagen.id = id;
