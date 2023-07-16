@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica Pexels</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Freehand&family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/mystyle.css">
+</head>
+
+<body>
+    <header>
+        <section class="introducirDescripcion">
+            <form action="" method="" id="formulario">
+                <label for="busqueda">Describe lo que buscas</label>
+                <input type="text" id="busqueda" name="busqueda" placeholder="describe la foto">
+                <label for="orientacion">¿Vertical u horizontal?</label>
+                <select name="orientacion" id="orientacion" class="disenyoBoton">
+                    <option value="">Indiferente</option>
+                    <option value="portrait">Vertical</option>
+                    <option value="landscape">Horizontal</option>
+
+                </select>
+                <input type="submit" value="Encuentra tu foto" class="disenyoBoton">
+                <p id="formatoMalo"></p>
+
+            </form>
+    </header>
+    <main>
+
+        <section id="botones" class="botonesTendencias">
+            <button id="btnMostrar">Mostrar otra sugerencia</button>
+            <button id="btnOcultar" class="">No mostrar sugerencias</button>
+        </section>
+
+        </section>
+        <section>
+            <h2 id="cabeceraTendencias">TENDENCIAS</h2>
+        </section>
+        <section id="tendencias" class="tendenciasContainer">
+
+        </section>
+        <section>
+            <h2 id="cabeceraResultado" class="esconder">HEMOS ENCONTRADO ESTO PARA TI</h2>
+        </section>
+        <section id="contenedorFotos" class="flexContainer"> </section>
+        <section id="cambioPagina" class="botonesTendencias">
+
+            <button id="anterior" class="esconder">Anterior</button>
+            <button id="siguiente" class="esconder">Siguiente</button>
+
+
+        </section>
+
+
+        <footer id="piePagina"class="esconder">
+
+            <a href="https://www.pexels.com">ALL CREDIT TO PEXELS</a>
+
+        </footer>
+    </main>
+    <script src="js/main2.js"></script>
+</body>
+
+</html>

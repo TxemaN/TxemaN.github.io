@@ -1,0 +1,148 @@
+* {
+
+   border: none;
+   border-radius: 2%;
+   cursor: pointer;
+   margin: 0;
+}
+
+h2 {
+   text-align: center;
+   font-family: 'Freehand', sans-serif;
+   font-size: 2rem;
+}
+   
+div{
+   justify-content: right;
+
+}
+
+img {
+   border: wheat 1rem solid;
+   border-radius: 25%;
+   
+  
+}
+
+header {
+   background-color: crimson;
+}
+
+body {
+   background-color: cadetblue;
+   
+}
+footer {
+   background-color: crimson;
+   text-align: center;
+  
+}
+
+a {
+   font-family: 'Freehand', sans-serif;
+}
+
+p {
+   font-family: 'Freehand', sans-serif;
+}
+
+label {
+
+   font-family: 'Freehand', sans-serif;
+   font-size: 1.5rem;
+
+}
+button{
+   border-radius: 6%;
+   font-family: 'Freehand', sans-serif;
+   font-size: 1.2rem;
+   background-color: #008CBA;
+   border: 2px solid #4CAF50;
+   transition-duration: 0.4s;
+}
+button:hover {
+   background-color: pink; 
+   color: white;
+ }
+.disenyoBoton{
+   border-radius: 6%;
+   font-family: 'Freehand', sans-serif;
+   font-size: 1.2rem;
+   background-color: #008CBA;
+   border: 2px solid #4CAF50;
+   transition-duration: 0.4s;
+}
+.disenyoBoton:hover {
+   background-color: pink; 
+   color: white;
+ }
+
+.flexContainer {
+   display: flex;
+   flex-wrap: wrap;
+   width: 100%;
+   justify-content: center;
+   gap: 5%;
+}
+
+.introducirDescripcion {
+
+   width: 100%;
+   justify-content: center;
+}
+
+.botonesTendencias {
+   display: flex;
+   flex-wrap: wrap;
+   width: 100%;
+   gap: 10px;
+
+   justify-content: center;
+}
+
+.tendenciasContainer {
+   display: flex;
+   flex-wrap: wrap;
+   width: 100%;
+   gap: 10px;
+
+   justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+
+   img:hover {
+      transform: scale(1.1);
+   }
+
+   .introducirDescripcion {
+
+      width: 120%;
+      margin-left: 22%;
+      justify-content: center;
+   }
+
+   .introducirDescripcion>* {
+      width: calc(50% - 15px);
+
+   }
+
+   .flexContainer>* {
+      
+      width: calc(39% - 10px);
+      justify-content: center;
+   }
+
+   .paginacion {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      gap: 10px;
+
+      justify-content: center;
+   }
+
+   .esconder {
+      display: none
+   }
+}
