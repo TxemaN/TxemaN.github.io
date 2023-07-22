@@ -18,10 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnOcultar = document.querySelector("#btnOcultar")
     const piePagina = document.querySelector("#piePagina")
     let paginaResultado = 1
-    
+
     const regExp = {
         loQueBusca: /[\a-zA-Z\s]+/i
     }
+
     //INPUT USUARIO
     form.addEventListener('submit', (ev) => {
         ev.preventDefault()
@@ -48,13 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (ev.target.id == "btnMostrar") {
 
             mostrarFotos();
-            consulta(urlTendencias2);
-            refTendencia += 1
+            
 
-            console.log(refTendencia)
-
-            pintarTendencias()
-            btnMostrar.textContent = "Mostrar otra sugerencia"
+            
         }
         if (ev.target.id == "btnOcultar") {
             esconderFotos();
@@ -67,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pintarFotos(url)
 
             if (paginaResultado < 1) { paginaResultado = 1 }
-
+            if (paginaResultado == 1) { anterior.classList.add("esconder") }
 
 
         }
@@ -75,7 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
             paginaResultado = paginaResultado += 1;
             url = `${urlConOrientacion}${paginaResultado}`
             pintarFotos(url)
-
+            if (paginaResultado == 1) { anterior.classList.add("esconder") }
+            if (paginaResultado > 1) { anterior.classList.remove("esconder") }
 
 
         }
@@ -90,11 +88,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (target.id == 59523) {
             contenedorFotos.innerHTML = "";
-            
+
             let probando = "probando";
             console.log(probando)
             const url = `search?query=puppy&per_page=6&orientation=&page=1`
-            anterior.classList.add("esconder")
+
             pintarFotos(url)
 
 
@@ -143,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const comenzarPintar = () => {
         let valor = busqueda.value
         let valor2 = orientacion.value
-        
+
         siguiente.classList.remove("esconder")
         piePagina.classList.remove("esconder")
 
@@ -167,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const esconderFotos = () => {
         tendencia.classList.add("esconder")
         cabeceraTendencias.classList.add("esconder")
+        btnMostrar.classList.remove("esconder")
         btnOcultar.classList.add("esconder")
     }
 
@@ -241,11 +240,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const pintarFotos = async (url) => {
         contenedorFotos.innerHTML = ""
-        
+        cabeceraResultado.classList.remove("esconder")
         siguiente.classList.remove("esconder")
         piePagina.classList.remove("esconder")
         const { ok, datos } = await consulta(url)
-        
+
 
         if (ok) {
             const { photos } = datos
@@ -274,6 +273,13 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(datos)
         }
         // console.log(busqueda)
+    }
+    const mostrarFotos = () => {
+        tendencia.classList.remove("esconder")
+        btnMostrar.classList.add("esconder")
+        btnOcultar.classList.remove("esconder")
+        cabeceraTendencias.classList.remove("esconder")
+        
     }
 
     pintarTendencias()

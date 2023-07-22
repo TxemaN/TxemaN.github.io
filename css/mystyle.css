@@ -12,14 +12,12 @@ h2 {
    font-size: 2rem;
 }
    
-div{
-   justify-content: right;
 
-}
 
 img {
    border: wheat 1rem solid;
-   border-radius: 25%;
+   border-radius: 10%;
+   width: 70%;
    
   
 }
@@ -84,8 +82,8 @@ button:hover {
    display: flex;
    flex-wrap: wrap;
    width: 100%;
+   gap: 10px;
    justify-content: center;
-   gap: 5%;
 }
 
 
@@ -100,24 +98,20 @@ button:hover {
    flex-wrap: wrap;
    width: 100%;
    gap: 10px;
-
    justify-content: center;
 }
 
 .tendenciasContainer {
    display: flex;
-   flex-wrap: wrap;
+   
    width: 100%;
    gap: 10px;
-
    justify-content: center;
 }
 
 @media screen and (min-width: 992px) {
 
-   img:hover {
-      transform: scale(1.1);
-   }
+   
    .disenyoBoton{
       font-size: 1.2rem;  
    }
@@ -133,11 +127,7 @@ button:hover {
 
    }
 
-   .flexContainer>* {
-      
-      width: calc(39% - 10px);
-      justify-content: center;
-   }
+   
 
    .paginacion {
       display: flex;
@@ -150,5 +140,11 @@ button:hover {
 
    .esconder {
       display: none
+   }
+   img {
+   
+      width: 100;
+      
+     
    }
 }
