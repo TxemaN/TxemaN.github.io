@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (target.id == 59523) {
             contenedorFotos.innerHTML = "";
-
+            anterior.classList.add("esconder")
             let probando = "probando";
             console.log(probando)
             const url = `search?query=puppy&per_page=6&orientation=&page=1`
@@ -101,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         else if (target.id == 97492) {
             contenedorFotos.innerHTML = ""
+            anterior.classList.add("esconder")
             let probando = "probando";
             console.log(probando)
             const url = `search?query=fire&per_page=6&orientation=&page=1`
@@ -112,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         else if (target.id == 3746214) {
             contenedorFotos.innerHTML = ""
+            anterior.classList.add("esconder")
             let probando = "probando";
             console.log(probando)
             const url = `search?query=flower&per_page=6&orientation=&page=1`
