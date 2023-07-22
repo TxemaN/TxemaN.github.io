@@ -84,6 +84,12 @@ button:hover {
    width: 100%;
    gap: 10px;
    justify-content: center;
+   
+}
+.flexContainer>* {
+   align-items: center;
+   justify-content: center;
+   
 }
 
 
@@ -103,7 +109,7 @@ button:hover {
 
 .tendenciasContainer {
    display: flex;
-   
+   align-items: center;
    width: 100%;
    gap: 10px;
    justify-content: center;
@@ -142,9 +148,6 @@ button:hover {
       display: none
    }
    img {
-   
       width: 100;
-      
-     
    }
 }
