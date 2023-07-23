@@ -1,10 +1,8 @@
 * {
-
    border: none;
    border-radius: 2%;
    cursor: pointer;
-   margin: 0;
-}
+   margin: 0;}
 
 h2 {
    text-align: center;
@@ -15,7 +13,7 @@ h2 {
 
 
 img {
-   border: wheat 1rem solid;
+   border: wheat 0.5rem solid;
    border-radius: 10%;
    width: 70%;
    
@@ -65,7 +63,7 @@ button:hover {
 .disenyoBoton{
    border-radius: 6%;
    font-family: 'Freehand', sans-serif;
-   font-size: 0.8rem;
+   font-size: 0.6rem;
    background-color: #008CBA;
    border: 2px solid #4CAF50;
    transition-duration: 0.4s;
@@ -78,15 +76,17 @@ button:hover {
    justify-content: center;
 }
 
-.flexContainer {
-   display: flex;
-   flex-wrap: wrap;
+.gridContainer {
+   display: grid;
+   grid-template-columns: repeat(2, 35%);
    width: 100%;
    gap: 10px;
    justify-content: center;
+   align-self: center;
    
 }
-.flexContainer>* {
+.gridContainer>* {
+   display: flex;
    align-items: center;
    justify-content: center;
    
@@ -108,12 +108,24 @@ button:hover {
 }
 
 .tendenciasContainer {
-   display: flex;
-   align-items: center;
+   display: grid;
+   grid-template-columns: repeat(3, 30%);
+   
    width: 100%;
    gap: 10px;
    justify-content: center;
+   
+   align-items: center;
+  
 }
+
+.tendenciasContainer>* {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   
+}
+
 
 @media screen and (min-width: 992px) {
 
@@ -133,7 +145,15 @@ button:hover {
 
    }
 
-   
+   .gridContainer {
+      display: grid;
+      grid-template-columns: repeat(3, 35%);
+      width: 100%;
+      gap: 10px;
+      justify-content: center;
+      align-self: center;
+      
+   }
 
    .paginacion {
       display: flex;
