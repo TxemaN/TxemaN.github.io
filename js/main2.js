@@ -53,13 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             
         }
-        if (ev.target.id == "btnOcultar") {
+      else  if (ev.target.id == "btnOcultar") {
             esconderFotos();
 
             btnMostrar.textContent = "Mostrar tendencias"
         }
-        if (ev.target.id == "anterior") {
-            paginaResultado = paginaResultado -= 1;
+       else if (ev.target.id == "anterior") {
+            paginaResultado -= 1;
             url = `${urlConOrientacion}${paginaResultado}`
             pintarFotos(url)
 
@@ -68,8 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         }
-        if (ev.target.id == "siguiente") {
-            paginaResultado = paginaResultado += 1;
+       else if (ev.target.id == "siguiente") {
+             paginaResultado += 1;
             url = `${urlConOrientacion}${paginaResultado}`
             pintarFotos(url)
             if (paginaResultado == 1) { anterior.classList.add("esconder") }
@@ -82,9 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     //REPRODUCIR EL SEARCH DE LA TENDENCIA EN LOS RESULTADOS DE ABAJO//
     document.addEventListener("click", ({ target }) => {
-
-
-
 
         if (target.id == 59523) {
             contenedorFotos.innerHTML = "";
@@ -170,10 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
         btnMostrar.classList.remove("esconder")
         btnOcultar.classList.add("esconder")
     }
-
-
-
-
 
 
     //COGER DEL HTML
